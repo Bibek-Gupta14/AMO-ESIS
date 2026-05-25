@@ -1,0 +1,482 @@
+/* =============================================================================
+   ESIS Meghalaya Government Portal — responsive.css
+   Media queries: tablet, mobile, print
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   LARGE DESKTOP  (> 1200px)
+   --------------------------------------------------------------------------- */
+@media (min-width: 1201px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   TABLET LANDSCAPE  (1024px and below)
+   --------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 200px;
+    --gutter: 1.25rem;
+  }
+
+  .layout-grid {
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-6);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   TABLET PORTRAIT  (992px and below)
+   --------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  :root {
+    --gutter: 1rem;
+  }
+
+  /* Accessibility bar - stack vertically on small screens */
+  .accessibility-bar .container {
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: stretch;
+  }
+
+  .a11y-left,
+  .a11y-right {
+    justify-content: center;
+  }
+
+  .a11y-search {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .a11y-search-input {
+    flex: 1;
+    max-width: 260px;
+  }
+
+  /* Header responsive */
+  .header-inner {
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .header-right {
+    display: none; /* Hide badge on small screens */
+  }
+
+  .header-title {
+    font-size: var(--fs-xl);
+  }
+
+  .emblem-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Navigation — hamburger layout */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: var(--clr-primary-dark);
+    padding: var(--space-2) 0;
+  }
+
+  .nav-list.open {
+    display: flex;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-link {
+    padding: var(--space-3) var(--space-6);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    width: 100%;
+    border-left: 3px solid transparent;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(255,255,255,0.06);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    border-bottom-color: rgba(255,255,255,0.06);
+    border-left-color: #FFFFFF;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .main-nav .nav-inner {
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  .nav-brand-mobile {
+    display: flex;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    color: rgba(255,255,255,0.8);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+  }
+
+  /* Two-column layout collapses */
+  .layout-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .sidebar {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .sidebar-section:last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Benefits grid */
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Hospitals search */
+  .hospitals-search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hospital-filter-select {
+    width: 100%;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb-inner {
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: flex-start;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+
+  .footer-bottom-links {
+    justify-content: center;
+  }
+
+  /* Back to top */
+  .back-to-top {
+    bottom: var(--space-4);
+    right: var(--space-4);
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   MOBILE  (480px and below)
+   --------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  :root {
+    --gutter: 0.875rem;
+  }
+
+  html {
+    font-size: 15px;
+  }
+
+  /* Accessibility bar — hide non-essential items */
+  .a11y-separator {
+    display: none;
+  }
+
+  .lang-selector {
+    gap: var(--space-1);
+  }
+
+  /* Header stacks */
+  .header-emblem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-divider {
+    display: none;
+  }
+
+  .emblem-wrapper {
+    width: 52px;
+    height: 52px;
+  }
+
+  .header-office {
+    font-size: 11px;
+  }
+
+  .header-title {
+    font-size: var(--fs-lg);
+  }
+
+  /* Sidebar stacks vertically */
+  .sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stats — single column */
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Benefits heading */
+  .section-title {
+    font-size: var(--fs-xl);
+  }
+
+  /* Notices */
+  .notice-item {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .notice-date {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: none;
+    padding: 0;
+    min-width: auto;
+  }
+
+  .notice-day {
+    font-size: var(--fs-base);
+  }
+
+  /* Hospital table — convert to cards on mobile */
+  .hospitals-table thead {
+    display: none;
+  }
+
+  .hospitals-table,
+  .hospitals-table tbody,
+  .hospitals-table tr,
+  .hospitals-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .hospitals-table tbody tr {
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--clr-surface);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-fast);
+  }
+
+  .hospitals-table tbody tr:hover {
+    box-shadow: var(--shadow-md);
+    background: #FEF8F8;
+  }
+
+  .hospitals-table td {
+    padding: var(--space-1) 0;
+  }
+
+  .hospitals-table td::before {
+    content: attr(data-label);
+    font-size: 10px;
+    font-weight: var(--fw-bold);
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .hospital-num {
+    text-align: left;
+  }
+
+  /* Page heading size */
+  .page-heading {
+    font-size: var(--fs-xl);
+  }
+
+  /* Info banner */
+  .info-banner {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  /* Footer social */
+  .footer-social {
+    justify-content: center;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   VERY SMALL SCREENS  (360px and below)
+   --------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  :root {
+    --gutter: 0.75rem;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  .a11y-right {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .font-controls {
+    flex-wrap: wrap;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   FOCUS VISIBLE — Enhanced keyboard navigation styles
+   --------------------------------------------------------------------------- */
+.nav-link:focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: -3px;
+}
+
+.sidebar-nav-link:focus-visible {
+  outline: 3px solid var(--clr-primary);
+  outline-offset: 2px;
+}
+
+.benefit-card:focus-within {
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------------------------------------------------------------------------
+   HIGH CONTRAST MODE
+   --------------------------------------------------------------------------- */
+@media (prefers-contrast: high) {
+  :root {
+    --clr-border: #999;
+    --clr-text-secondary: #000;
+    --clr-text-muted: #333;
+  }
+
+  .benefit-card,
+  .stat-card,
+  .sidebar-section,
+  .hospitals-table-wrapper {
+    border-width: 2px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   REDUCED MOTION
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   PRINT STYLES
+   --------------------------------------------------------------------------- */
+@media print {
+  .accessibility-bar,
+  .main-nav,
+  .breadcrumb-bar,
+  .sidebar,
+  .site-footer,
+  .back-to-top,
+  .nav-toggle {
+    display: none !important;
+  }
+
+  .layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+
+  .page-heading,
+  .section-title {
+    color: #000;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .benefit-card,
+  .stat-card,
+  .notice-item {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+
+  .page-intro {
+    page-break-after: avoid;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   FONT SIZE OVERRIDES (JS-controlled via body classes)
+   --------------------------------------------------------------------------- */
+body.font-sm {
+  font-size: 14px;
+}
+
+body.font-lg {
+  font-size: 18px;
+}
+
+body.font-xl {
+  font-size: 20px;
+}
