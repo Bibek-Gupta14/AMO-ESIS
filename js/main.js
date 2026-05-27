@@ -88,7 +88,7 @@ const initMobileNav = () => {
    3. FONT SIZE ACCESSIBILITY CONTROLS
 ───────────────────────────────────────────── */
 const initFontSizeControls = () => {
-  const body = document.body;
+  const root = document.documentElement;
   const sizes = ['font-sm', '', 'font-lg', 'font-xl'];
   const labels = ['Small', 'Default', 'Large', 'Extra Large'];
   let currentIndex = 1; // Default
@@ -102,8 +102,8 @@ const initFontSizeControls = () => {
 
   function applyFontSize(index) {
     // Remove all font-size classes
-    sizes.forEach(cls => cls && body.classList.remove(cls));
-    if (sizes[index]) body.classList.add(sizes[index]);
+    sizes.forEach(cls => cls && root.classList.remove(cls));
+    if (sizes[index]) root.classList.add(sizes[index]);
 
     // Update button active states
     qsa('.font-size-btn').forEach((btn, i) => {
@@ -121,6 +121,64 @@ const initFontSizeControls = () => {
     });
   });
 };
+
+/* ─────────────────────────────────────────────
+   3.5 CONTRAST & THEME ACCESSIBILITY CONTROLS
+───────────────────────────────────────────── */
+const initThemeControls = () => {
+  const a11yLeft = qs('.a11y-left');
+  if (!a11yLeft) return;
+
+  const themeControls = document.createElement('div');
+  themeControls.className = 'theme-controls';
+  themeControls.setAttribute('role', 'group');
+  themeControls.setAttribute('aria-label', 'Select contrast/theme');
+  
+  themeControls.innerHTML = `
+    <span class="a11y-separator" aria-hidden="true" style="margin: 0 var(--space-2); opacity: 0.3;">|</span>
+    <span style="color:rgba(255, 255, 255, 1); font-size:11px; margin-right:4px;">Contrast:</span>
+    <button class="theme-btn theme-btn-dark" data-theme="dark" aria-label="Dark Mode" aria-pressed="false">A</button>
+    <button class="theme-btn theme-btn-white" data-theme="white" aria-label="White Contrast" aria-pressed="false">A</button>
+    <button class="theme-btn theme-btn-normal active" data-theme="normal" aria-label="Normal Contrast" aria-pressed="true">A</button>
+  `;
+
+  const fontControls = qs('.font-controls', a11yLeft);
+  if (fontControls) {
+    fontControls.after(themeControls);
+  } else {
+    a11yLeft.appendChild(themeControls);
+  }
+
+  const root = document.documentElement;
+  const buttons = qsa('.theme-btn', themeControls);
+
+  const applyTheme = (themeName) => {
+    if (themeName === 'normal') {
+      root.removeAttribute('data-theme');
+    } else {
+      root.setAttribute('data-theme', themeName);
+    }
+
+    buttons.forEach(btn => {
+      const active = btn.dataset.theme === themeName;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
+  };
+
+  const savedTheme = localStorage.getItem('esis-theme') || 'normal';
+  applyTheme(savedTheme);
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.dataset.theme;
+      applyTheme(selected);
+      localStorage.setItem('esis-theme', selected);
+      announceToScreenReader(`Theme changed to ${selected} mode`);
+    });
+  });
+};
+
 
 /* ─────────────────────────────────────────────
    4. LANGUAGE SELECTOR
@@ -571,6 +629,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // UI modules
   initMobileNav();
   initFontSizeControls();
+  initThemeControls();
   initLanguageSelector();
   initHospitalSearch();
   initSiteSearch();

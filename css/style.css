@@ -98,6 +98,107 @@
 }
 
 /* ---------------------------------------------------------------------------
+   1.5 ACCESSIBILITY COLOR CONTRAST THEMES
+   --------------------------------------------------------------------------- */
+/* Dark Mode Theme Variables */
+[data-theme="dark"] {
+  --clr-bg:            #121010;   /* Rich dark warm background */
+  --clr-bg-alt:        #181515;
+  --clr-surface:       #1E1A1A;   /* Dark warm surface */
+  --clr-border:        #3A3032;   /* Subtle border with a hint of maroon */
+  --clr-border-light:  #2A2425;
+  
+  --clr-text-primary:  #F5EBEB;   /* Clean light gray/cream text */
+  --clr-text-secondary:#D1C2C4;   /* Warm gray text */
+  --clr-text-muted:    #9C8A8C;   
+  --clr-text-invert:   #121010;
+  
+  /* Brand color values for active borders, highlights, link hovers */
+  --clr-primary:       #fb0b37;   /* Soft warm rose-maroon */
+  --clr-primary-dark:  #890c15;   /* Lighter hover state */
+  --clr-primary-light: #DF4A64;
+  --clr-accent:        #FF4B6C;
+  --clr-accent-hover:  #6d52e7;
+  
+  --clr-sidebar-bg:    #1E1A1A;
+  --clr-sidebar-hover: #2E2527;
+  --clr-sidebar-active:#857aff;
+  --clr-sidebar-hover-text: #FFFFFF;
+  
+  --clr-highlight:     #382418;
+  --clr-info-bg:       #1A2635;
+  --clr-info-border:   #2B4C7E;
+  
+  /* Shadows override for dark mode */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.6);
+  --shadow-card:0 2px 8px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] body {
+  background: var(--clr-bg);
+  color: var(--clr-text-primary);
+}
+
+/* Ensure navbar, sidebar headers are readable in dark mode */
+[data-theme="dark"] .main-nav {
+  background: #181515;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+[data-theme="dark"] .site-header {
+  border-bottom: 1px solid var(--clr-border);
+}
+
+[data-theme="dark"] .quick-link-logo {
+  background: #252020;
+}
+
+[data-theme="dark"] .social-link {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* White Mode / High Contrast Theme Variables */
+[data-theme="white"] {
+  --clr-bg:            #FFFFFF;
+  --clr-bg-alt:        #F6F6F6;
+  --clr-surface:       #FFFFFF;
+  --clr-border:        #000000;
+  --clr-border-light:  #666666;
+  
+  --clr-text-primary:  #000000;
+  --clr-text-secondary:#111111;
+  --clr-text-muted:    #333333;
+  --clr-text-invert:   #FFFFFF;
+  
+  --clr-primary:       #000000;
+  --clr-primary-dark:  #111111;
+  --clr-primary-light: #222222;
+  --clr-accent:        #000000;
+  --clr-accent-hover:  #111111;
+  
+  --clr-sidebar-bg:    #FFFFFF;
+  --clr-sidebar-hover: #EEEEEE;
+  --clr-sidebar-active:#000000;
+}
+
+[data-theme="white"] body {
+  background: var(--clr-bg);
+  color: var(--clr-text-primary);
+}
+
+[data-theme="white"] .main-nav {
+  background: #000000;
+  border-bottom: 2px solid #000000;
+}
+
+[data-theme="white"] .sidebar-section {
+  border-color: #000000;
+}
+
+
+/* ---------------------------------------------------------------------------
    2. RESET & BASE
    --------------------------------------------------------------------------- */
 *, *::before, *::after {
@@ -356,6 +457,67 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--clr-accent);
   border-color: var(--clr-accent);
   color: #FFFFFF;
+}
+
+/* Theme / Contrast controls — GIGW Standard square buttons */
+.theme-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.theme-btn {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  padding: 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.theme-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Dark: Yellow "A" on black background, yellow active outline */
+.theme-btn-dark {
+  background: #000000 !important;
+  color: #FFFF00 !important;
+  border: 1px solid #555555 !important;
+}
+.theme-btn-dark.active {
+  outline: 2px solid #FFFF00 !important;
+  outline-offset: 1px !important;
+  border-color: #FFFF00 !important;
+}
+
+/* White: Black "A" on white background, black border */
+.theme-btn-white {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  border: 1.5px solid #000000 !important;
+}
+.theme-btn-white.active {
+  outline: 2px solid #000000 !important;
+  outline-offset: 1px !important;
+}
+
+/* Normal: Maroon "A" on white/cream background, maroon/brown border */
+.theme-btn-normal {
+  background: #FFFFFF !important;
+  color: #7B1022 !important;
+  border: 1.5px solid #7B1022 !important;
+}
+.theme-btn-normal.active {
+  outline: 2px solid #7B1022 !important;
+  outline-offset: 1px !important;
 }
 
 /* Language selector */
@@ -1103,7 +1265,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
 }
 

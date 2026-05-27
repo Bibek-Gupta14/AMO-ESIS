@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="normal">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Screen Reader Access – ESIS Meghalaya</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <!-- Accessibility Bar – same controls as site-wide -->
+  <div class="accessibility-bar" role="complementary" aria-label="Accessibility tools">
+    <div class="container">
+      <div class="a11y-left">
+        <a href="#main-content" class="a11y-link skip-link" aria-label="Skip to main content">Skip to main content</a>
+      </div>
+      <div class="a11y-right">
+        <!-- Font size controls -->
+        <div class="font-controls" role="group" aria-label="Adjust font size">
+          <span style="color:rgba(255,255,255,0.6); font-size:11px; margin-right:4px;">A:</span>
+          <button class="font-size-btn" id="font-sm" data-size="0" aria-label="Small font size" aria-pressed="false" style="font-size:10px;">A-</button>
+          <button class="font-size-btn active" id="font-default" data-size="1" aria-label="Default font size" aria-pressed="true" style="font-size:12px;">A</button>
+          <button class="font-size-btn" id="font-lg" data-size="2" aria-label="Large font size" aria-pressed="false" style="font-size:14px;">A+</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner" aria-label="Site header">
+    <img class="header-banner-img" src="images/banner.jpg" alt="Office of the Administrative Medical Officer, Employees' State Insurance Scheme, Meghalaya, Shillong" />
+    <div class="visually-hidden">
+      <p class="header-office">Office of the Administrative Medical Officer</p>
+      <h1 class="header-title">Employees' State Insurance Scheme</h1>
+      <p class="header-subtitle">Meghalaya, Shillong &nbsp;·&nbsp; Government of India</p>
+    </div>
+  </header>
+
+  <!-- Main Navigation -->
+  <nav class="main-nav" role="navigation" aria-label="Main site navigation">
+    <div class="container nav-inner">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-list"><span></span><span></span><span></span></button>
+      <ul class="nav-list" id="nav-list" role="list">
+        <li class="nav-item"><a class="nav-link nav-home-icon" href="home.html" aria-label="Home"><svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M10.707 2.293a1 1 0 0 0-1.414 0l-7 7a1 1 0 0 0 1.414 1.414L4 10.414V17a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-6.586l.293.293a1 1 0 0 0 1.414-1.414l-7-7z"/></svg><span>Home</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="organogram.html">Organogram</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact-us.html">Key Contacts</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacts.html">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="forms.html">Download Forms</a></li>
+        <li class="nav-item"><a class="nav-link" href="photos.html">Photo Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="sitemap.html">Sitemap</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="content" id="main-content">
+    <section class="screen-reader-info" style="padding: var(--space-4); max-width: 800px; margin: auto;">
+      <h1>Screen Reader Access</h1>
+      <p>Assistive Technologies are meant to cater to the needs of people with various impairments like Visual, Hearing, Mobility, and Learning impairment. An assistive technology helps differently abled people in rendering or viewing a webpage. Screen Readers are assistive devices that convert text into synthesized speech to facilitate visually impaired users to listen and comprehend the content on a webpage. Following links can be visited to get more information about assistive technologies and screen readers:</p>
+      <ul>
+        <li><a href="http://www.screenreader.net" target="_blank" rel="noopener noreferrer">http://www.screenreader.net</a></li>
+        <li><a href="http://www.freedomscientific.com" target="_blank" rel="noopener noreferrer">http://www.freedomscientific.com</a></li>
+        <li><a href="http://www.gwmicro.com" target="_blank" rel="noopener noreferrer">http://www.gwmicro.com</a></li>
+        <li><a href="http://www.spectronicsinoz.com" target="_blank" rel="noopener noreferrer">http://www.spectronicsinoz.com</a></li> <br>
+      </ul>
+      <h2>Screen Reader Access</h2>
+      <p>The "Guidelines for Indian Government Websites" website complies with World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.0 level AA. This will enable people with visual impairments access the website using assistive technologies, such as screen readers. The information of the website is accessible with different screen readers, such as JAWS, NVDA, SAFA, Supernova and Window‑Eyes.</p> <br>
+      <h3>Information related to the various screen readers</h3>
+      <table>
+        <thead>
+          <tr><th>Screen Reader</th><th>Website</th><th>Free or Commercial</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Non Visual Desktop Access (NVDA)</td><td><a href="http://www.nvda-project.org/" target="_blank" rel="noopener noreferrer">http://www.nvda-project.org/</a></td><td>Free</td></tr>
+          <tr><td>System Access To Go</td><td><a href="http://www.satogo.com/" target="_blank" rel="noopener noreferrer">http://www.satogo.com/</a></td><td>Free</td></tr>
+          <tr><td>Thunder</td><td><a href="http://www.screenreader.net/index.php?pageid=2" target="_blank" rel="noopener noreferrer">http://www.screenreader.net/index.php?pageid=2</a></td><td>Free</td></tr>
+          <tr><td>WebAnywhere</td><td><a href="http://webanywhere.cs.washington.edu/wa.php" target="_blank" rel="noopener noreferrer">http://webanywhere.cs.washington.edu/wa.php</a></td><td>Free</td></tr>
+          <tr><td>Hal</td><td><a href="http://www.yourdolphin.co.uk/productdetail.asp?id=5" target="_blank" rel="noopener noreferrer">http://www.yourdolphin.co.uk/productdetail.asp?id=5</a></td><td>Commercial</td></tr>
+          <tr><td>J.A.W.S. (Job Access With Speech)</td><td><a href="http://www.freedomscientific.com/jaws-hq.asp" target="_blank" rel="noopener noreferrer">http://www.freedomscientific.com/jaws-hq.asp</a></td><td>Commercial</td></tr>
+          <tr><td>Supernova</td><td><a href="http://www.yourdolphin.co.uk/productdetail.asp?id=1" target="_blank" rel="noopener noreferrer">http://www.yourdolphin.co.uk/productdetail.asp?id=1</a></td><td>Commercial</td></tr>
+          <tr><td>Window‑Eyes</td><td><a href="http://www.gwmicro.com/Window-Eyes/" target="_blank" rel="noopener noreferrer">http://www.gwmicro.com/Window-Eyes/</a></td><td>Commercial</td></tr>
+        </tbody>
+      </table>
+      <p><a href="index.html" class="button">Return to Home</a></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo" aria-label="Site footer" id="contact-section" style="background: var(--clr-primary); padding: var(--space-6) 0; border-top: 4px solid var(--clr-primary-dark); text-align: center; color: #FFFFFF;">
+    <div class="container" style="font-size: var(--fs-sm); line-height: 1.6;">
+      <p style="margin-bottom: var(--space-2); font-weight: var(--fw-normal); opacity: 0.95;">Site Designed &amp; Hosted by National Informatics Centre, Meghalaya State Centre</p>
+      <p style="margin-bottom: var(--space-4); font-weight: var(--fw-normal); opacity: 0.95;">Content maintained and updated by Office of the Administrative Medical Officer, Employees' State Insurance Scheme, Meghalaya, Shillong</p>
+      <p style="margin-bottom: var(--space-4); font-weight: var(--fw-medium);"><a href="#" style="color: #FFFFFF; text-decoration: underline; margin: 0 var(--space-1);">Terms of Use</a> | <a href="#" style="color: #FFFFFF; text-decoration: underline; margin: 0 var(--space-1);">Accessibility Statement</a> | <a href="#" style="color: #FFFFFF; text-decoration: underline; margin: 0 var(--space-1);">Help</a></p>
+      <p style="font-size: var(--fs-xs); opacity: 0.8; margin: 0;">Last updated on <strong id="footer-last-updated-date" style="font-weight: inherit;">December 1, 2022</strong></p>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Scroll back to top of page" title="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+  <!-- Screen reader live announcements element -->
+  <div id="sr-live-region" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

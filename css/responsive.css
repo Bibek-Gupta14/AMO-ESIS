@@ -465,14 +465,14 @@
 /* ---------------------------------------------------------------------------
    FONT SIZE OVERRIDES (JS-controlled via body classes)
    --------------------------------------------------------------------------- */
-body.font-sm {
+html.font-sm {
   font-size: 14px;
 }
 
-body.font-lg {
+html.font-lg {
   font-size: 18px;
 }
 
-body.font-xl {
+html.font-xl {
   font-size: 20px;
 }
