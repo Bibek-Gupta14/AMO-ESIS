@@ -385,6 +385,9 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--fs-xs);
   padding: var(--space-2) 0;
   border-bottom: 1px solid rgba(255,255,255,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 101;
 }
 
 .accessibility-bar .container {
@@ -395,12 +398,17 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
 }
 
-.a11y-left,
-.a11y-right {
+.a11y-left {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
   gap: var(--space-4);
   flex-wrap: wrap;
+}
+
+.a11y-right {
+  display: none;
 }
 
 .a11y-link {
@@ -421,8 +429,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .a11y-separator {
-  color: rgba(255,255,255,0.3);
-  user-select: none;
+  display: none !important;
 }
 
 /* Font size controls */
@@ -518,6 +525,67 @@ h1, h2, h3, h4, h5, h6 {
 .theme-btn-normal.active {
   outline: 2px solid #7B1022 !important;
   outline-offset: 1px !important;
+}
+
+/* ── Extra Accessibility Controls (Text Spacing, Line Height, Reset) ── */
+.a11y-extra-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.a11y-extra-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  padding: 0 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.85);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  gap: 5px;
+  transition: background var(--transition-fast), color var(--transition-fast),
+              border-color var(--transition-fast), transform var(--transition-fast);
+  position: relative;
+}
+
+.a11y-extra-btn svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.a11y-extra-btn:hover {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  border-color: rgba(255,255,255,0.6);
+  transform: scale(1.08);
+}
+
+.a11y-extra-btn.active {
+  background: var(--clr-accent);
+  border-color: var(--clr-accent);
+  color: #fff;
+}
+
+.a11y-extra-btn:focus-visible {
+  outline: 2px solid #FFFF00;
+  outline-offset: 2px;
+}
+
+/* Applied state CSS custom properties */
+html.a11y-text-spacing * {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+}
+
+html.a11y-line-height * {
+  line-height: 1.9 !important;
 }
 
 /* Language selector */
@@ -704,7 +772,7 @@ h1, h2, h3, h4, h5, h6 {
 .main-nav {
   background: var(--clr-primary);
   position: sticky;
-  top: 0;
+  top: 38px;
   z-index: 100;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
@@ -872,8 +940,8 @@ h1, h2, h3, h4, h5, h6 {
    --------------------------------------------------------------------------- */
 .sidebar {
   position: sticky;
-  top: calc(58px + var(--space-4)); /* nav height + buffer */
-  max-height: calc(100vh - 100px);
+  top: calc(80px + var(--space-6)); /* combined sticky header heights (38px a11y + 58px main) + buffer */
+  max-height: calc(100vh - 140px);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(123, 16, 34, 0.2) transparent;

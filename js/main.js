@@ -85,44 +85,6 @@ const initMobileNav = () => {
 };
 
 /* ─────────────────────────────────────────────
-   3. FONT SIZE ACCESSIBILITY CONTROLS
-───────────────────────────────────────────── */
-const initFontSizeControls = () => {
-  const root = document.documentElement;
-  const sizes = ['font-sm', '', 'font-lg', 'font-xl'];
-  const labels = ['Small', 'Default', 'Large', 'Extra Large'];
-  let currentIndex = 1; // Default
-
-  // Restore saved preference
-  const saved = localStorage.getItem('esis-font-size');
-  if (saved !== null) {
-    currentIndex = parseInt(saved, 10);
-    applyFontSize(currentIndex);
-  }
-
-  function applyFontSize(index) {
-    // Remove all font-size classes
-    sizes.forEach(cls => cls && root.classList.remove(cls));
-    if (sizes[index]) root.classList.add(sizes[index]);
-
-    // Update button active states
-    qsa('.font-size-btn').forEach((btn, i) => {
-      btn.classList.toggle('active', i === index);
-      btn.setAttribute('aria-pressed', String(i === index));
-    });
-  }
-
-  qsa('.font-size-btn').forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-      currentIndex = i;
-      applyFontSize(i);
-      localStorage.setItem('esis-font-size', String(i));
-      announceToScreenReader(`Font size changed to ${labels[i]}`);
-    });
-  });
-};
-
-/* ─────────────────────────────────────────────
    3.5 CONTRAST & THEME ACCESSIBILITY CONTROLS
 ───────────────────────────────────────────── */
 const initThemeControls = () => {
@@ -179,6 +141,153 @@ const initThemeControls = () => {
   });
 };
 
+
+/* ─────────────────────────────────────────────
+   3.6 EXTRA ACCESSIBILITY CONTROLS
+   (Increase / Decrease Text, Text Spacing, Line Height, Reset)
+───────────────────────────────────────────── */
+const initExtraA11yControls = () => {
+  const a11yLeft = qs('.a11y-left');
+  if (!a11yLeft) return;
+
+  const root = document.documentElement;
+
+  /* ── font size step (separate from the A- / A / A+ buttons) ── */
+  // Steps: 85% / 100% / 115% / 130%
+  const fontSteps = [85, 100, 115, 130];
+  let fontStep = parseInt(localStorage.getItem('esis-text-step') || '1', 10);
+
+  const applyTextStep = (step) => {
+    fontStep = Math.max(0, Math.min(fontSteps.length - 1, step));
+    root.style.fontSize = fontSteps[fontStep] + '%';
+    localStorage.setItem('esis-text-step', String(fontStep));
+  };
+  // Restore on load
+  if (localStorage.getItem('esis-text-step') !== null) applyTextStep(fontStep);
+
+  /* ── text-spacing toggle ── */
+  let spacingOn = localStorage.getItem('esis-text-spacing') === '1';
+  const applySpacing = (on) => {
+    spacingOn = on;
+    root.classList.toggle('a11y-text-spacing', on);
+    localStorage.setItem('esis-text-spacing', on ? '1' : '0');
+  };
+  if (spacingOn) applySpacing(true);
+
+  /* ── line-height toggle ── */
+  let lineOn = localStorage.getItem('esis-line-height') === '1';
+  const applyLineHeight = (on) => {
+    lineOn = on;
+    root.classList.toggle('a11y-line-height', on);
+    localStorage.setItem('esis-line-height', on ? '1' : '0');
+  };
+  if (lineOn) applyLineHeight(true);
+
+  /* ── build & inject the control strip ── */
+  const strip = document.createElement('div');
+  strip.className = 'a11y-extra-controls';
+  strip.setAttribute('role', 'group');
+  strip.setAttribute('aria-label', 'Extra text accessibility controls');
+
+  strip.innerHTML = `
+    <span class="a11y-separator" aria-hidden="true" style="margin:0 4px;opacity:0.3">|</span>
+
+    <!-- Increase Text -->
+    <button class="a11y-extra-btn" id="a11y-text-inc" aria-label="Increase text size" title="Increase Text">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6 17.59L7.41 19 12 14.42 16.59 19 18 17.59l-6-6z"/>
+        <path d="M6 11l1.41 1.41L12 7.83l4.59 4.58L18 11l-6-6z"/>
+      </svg>
+      <span>Text ↑</span>
+    </button>
+
+    <!-- Decrease Text -->
+    <button class="a11y-extra-btn" id="a11y-text-dec" aria-label="Decrease text size" title="Decrease Text">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M18 6.41L16.59 5 12 9.58 7.41 5 6 6.41l6 6z"/>
+        <path d="M18 13l-1.41-1.41L12 16.17l-4.59-4.58L6 13l6 6z"/>
+      </svg>
+      <span>Text ↓</span>
+    </button>
+
+    <!-- Text Spacing -->
+    <button class="a11y-extra-btn" id="a11y-spacing" aria-label="Toggle text spacing" aria-pressed="false" title="Text Spacing">
+      <svg viewBox="0 0 1024 1024" fill="currentColor" aria-hidden="true">
+        <path d="M920 416H616c-4.4 0-8 3.6-8 8v112c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-56h60v320h-46c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h164c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8h-46V480h60v56c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V424c0-4.4-3.6-8-8-8zM656 296V168c0-4.4-3.6-8-8-8H104c-4.4 0-8 3.6-8 8v128c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-64h168v560h-92c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-92V232h168v64c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8z"/>
+      </svg>
+      <span>Text Spacing</span>
+    </button>
+
+    <!-- Line Height -->
+    <button class="a11y-extra-btn" id="a11y-lineheight" aria-label="Toggle line height" aria-pressed="false" title="Line Height">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M11 4H21V6H11V4ZM6 7V11H4V7H1L5 3L9 7H6ZM6 17H9L5 21L1 17H4V13H6V17ZM11 18H21V20H11V18ZM9 11H21V13H9V11Z"/>
+      </svg>
+      <span>Line Height</span>
+    </button>
+
+    <!-- Reset -->
+    <button class="a11y-extra-btn" id="a11y-reset" aria-label="Reset text settings" title="Reset Text">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M20 8C18.6 5 15.5 3 12 3 7 3 3 7 3 12s4 9 9 9 9-4 9-9M21 3v6h-6"/>
+      </svg>
+      <span>Reset</span>
+    </button>
+  `;
+
+  // Inject after theme-controls (or at end of a11y-left)
+  const themeControls = qs('.theme-controls', a11yLeft);
+  if (themeControls) {
+    themeControls.after(strip);
+  } else {
+    a11yLeft.appendChild(strip);
+  }
+
+  /* ── wire up buttons ── */
+  const btnInc  = qs('#a11y-text-inc', strip);
+  const btnDec  = qs('#a11y-text-dec', strip);
+  const btnSpacing = qs('#a11y-spacing', strip);
+  const btnLine    = qs('#a11y-lineheight', strip);
+  const btnReset   = qs('#a11y-reset', strip);
+
+  const refreshSpacingBtn = () => {
+    btnSpacing.classList.toggle('active', spacingOn);
+    btnSpacing.setAttribute('aria-pressed', String(spacingOn));
+  };
+  const refreshLineBtn = () => {
+    btnLine.classList.toggle('active', lineOn);
+    btnLine.setAttribute('aria-pressed', String(lineOn));
+  };
+  refreshSpacingBtn();
+  refreshLineBtn();
+
+  btnInc.addEventListener('click', () => {
+    applyTextStep(fontStep + 1);
+    announceToScreenReader('Text size increased');
+  });
+  btnDec.addEventListener('click', () => {
+    applyTextStep(fontStep - 1);
+    announceToScreenReader('Text size decreased');
+  });
+  btnSpacing.addEventListener('click', () => {
+    applySpacing(!spacingOn);
+    refreshSpacingBtn();
+    announceToScreenReader(spacingOn ? 'Text spacing enabled' : 'Text spacing disabled');
+  });
+  btnLine.addEventListener('click', () => {
+    applyLineHeight(!lineOn);
+    refreshLineBtn();
+    announceToScreenReader(lineOn ? 'Line height increased' : 'Line height reset');
+  });
+  btnReset.addEventListener('click', () => {
+    applyTextStep(1);
+    applySpacing(false);
+    applyLineHeight(false);
+    refreshSpacingBtn();
+    refreshLineBtn();
+    announceToScreenReader('Text settings reset to default');
+  });
+};
 
 /* ─────────────────────────────────────────────
    4. LANGUAGE SELECTOR
@@ -259,30 +368,6 @@ const initHospitalSearch = () => {
 };
 
 /* ─────────────────────────────────────────────
-   6. SITE SEARCH (Header search bar)
-───────────────────────────────────────────── */
-const initSiteSearch = () => {
-  const form = qs('#site-search-form');
-  const input = qs('#site-search-input');
-
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const query = input ? input.value.trim() : '';
-    if (query.length < 2) {
-      input && input.classList.add('error');
-      setTimeout(() => input && input.classList.remove('error'), 1500);
-      return;
-    }
-    // For now, surface a simple alert (would integrate with site search API)
-    announceToScreenReader(`Searching for: ${query}`);
-    console.info(`[ESIS Search] Query: "${query}"`);
-    // TODO: Integrate with actual search backend
-  });
-};
-
-/* ─────────────────────────────────────────────
    7. BACK-TO-TOP BUTTON
 ───────────────────────────────────────────── */
 const initBackToTop = () => {
@@ -315,7 +400,9 @@ const initActiveNav = () => {
     .filter(Boolean);
 
   const setActive = () => {
-    const scrollPos = window.scrollY + 80; // nav height offset
+    const a11yHeight = qs('.accessibility-bar')?.offsetHeight || 0;
+    const navHeight = qs('.main-nav')?.offsetHeight || 60;
+    const scrollPos = window.scrollY + navHeight + a11yHeight + 16;
 
     let activeSection = null;
     sections.forEach(section => {
@@ -391,8 +478,10 @@ const initSmoothScroll = () => {
       if (!target) return;
       e.preventDefault();
 
+      const a11yHeight = qs('.accessibility-bar')?.offsetHeight || 0;
       const navHeight = qs('.main-nav')?.offsetHeight || 60;
-      const targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+      const totalNavHeight = navHeight + a11yHeight;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - totalNavHeight - 16;
 
       window.scrollTo({ top: targetTop, behavior: 'smooth' });
 
@@ -628,11 +717,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // UI modules
   initMobileNav();
-  initFontSizeControls();
+
   initThemeControls();
+  initExtraA11yControls();
   initLanguageSelector();
   initHospitalSearch();
-  initSiteSearch();
+
   initBackToTop();
   initActiveNav();
   initSidebarA11y();
