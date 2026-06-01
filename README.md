@@ -27,10 +27,9 @@ Built with accessibility and inclusion at its core, the portal ensures equitable
 ### 🔒 Accessibility & Inclusivity
 
 - **WCAG 2.1 AA Compliant**: Full compliance with Web Content Accessibility Guidelines
-- **Screen Reader Support**: Optimized for assistive technologies
+- **Screen Reader Support**: Optimized for assistive technologies and features a dedicated Screen Reader Access guide
 - **Keyboard Navigation**: Complete functionality without mouse dependency, including arrow key support in sidebars
-- **Contrast & Font Scaling**: Multiple theme overrides and dynamic text sizing (Small / Default / Large / Extra Large) persisted in localStorage
-- **Multilingual Support**: Content available in English, Hindi, and Khasi
+- **Advanced Layout Controls**: Multiple theme overrides (Dark, White, Normal contrast) and dynamic typography tools (Increase/Decrease text sizes up to 130%/85%, Text Spacing toggles, Line Height adjustments) with full state persistence in localStorage
 
 ### 🏛️ Government Compliance
 
@@ -153,6 +152,7 @@ AMO ESIS/
 ├── contact-us.html            # Directory structure & primary office contact info
 ├── contacts.html              # Medical centers directory & Google map embed
 ├── forms.html                 # Downloadable forms & documents listing
+├── screen.html                # Screen reader access information page
 ├── css/
 │   ├── style.css             # Main stylesheet & variable tokens
 │   └── responsive.css        # Mobile, tablet grid layouts & a11y overrides
@@ -168,7 +168,9 @@ AMO ESIS/
     ├── Minutes of the Training Program on Web Content Creation and Updation Process.pdf
     ├── Reimbursement Form.pdf
     ├── Results for the post of Grade IV.pdf
-    └── WalkinInterviewIMO may 2023.pdf
+    ├── WalkinInterviewIMO may 2023.pdf
+    ├── Annexure A.pdf
+    └── Annexure B.pdf
 ```
 
 ---
@@ -249,9 +251,9 @@ npx http-server
 
 ### Accessibility Tools
 
-- Built-in text size adjustment (Small / Default / Large / Extra Large)
-- Language selector for local options
-- Skip to Main Content shortcut links
+- **Built-in Advanced Typography Tools**: Increase/Decrease text sizes, Text Spacing toggle, Line Height toggle, and Reset options located in the sticky accessibility bar.
+- **Contrast Switchers**: Normal theme, Dark mode contrast theme, and White contrast theme persisted site-wide.
+- **Skip to Main Content** shortcut links.
 
 ---
 
@@ -349,7 +351,7 @@ This portal demonstrates excellence in:
 
 ---
 
-**Last Updated**: May 2026 | 
+**Last Updated**: June 2026 | 
 **For the latest information, visit**: [AMO ESIS Portal](https://meghalaya.gov.in)
 
 ---
