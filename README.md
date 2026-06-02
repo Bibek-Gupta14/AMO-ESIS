@@ -146,31 +146,37 @@ National Informatics Centre <br><br>
 
 ```
 AMO ESIS/
-├── index.html                 # Main website homepage & portal entry
-├── home.html                  # Welcome page with introduction, vision, mission
-├── organogram.html            # Department hierarchy & structural chart
-├── contact-us.html            # Directory structure & primary office contact info
-├── contacts.html              # Medical centers directory & Google map embed
-├── forms.html                 # Downloadable forms & documents listing
-├── screen.html                # Screen reader access information page
+├── index.html                 # Main portal redirect & splash entry point
+├── home.html                  # Homepage with vision, mission, and live announcements
+├── esis.html                  # Detailed overview of the ESI Scheme
+├── administrative-setup.html  # Administrative hierarchy & division profiles
+├── organogram.html            # Interactive department organogram / flow chart
+├── scheme-implementation.html  # Statistics & implementation details of the scheme
+├── rules-regulations.html     # Legal frameworks, rules, and regulations
+├── rti.html                   # Right to Information (RTI) disclosures & details
+├── contact-us.html            # Contact directory for the Administrative Medical Officer
+├── contacts.html              # Medical units directory with dynamic search & Google Maps
+├── forms.html                 # Downloadable medical reimbursement & official forms
+├── finances.html              # Financial allocations, audit statements, and budgets
+├── faq.html                   # Frequently Asked Questions with interactive accordion
+├── links.html                 # Essential external government portals & hyperlinks
+├── sitemap.html               # Hierarchical sitemap of the entire portal
+├── help.html                  # Help & accessibility guide (file format viewing instructions)
+├── accessibility.html         # Comprehensive accessibility statement & standards compliance
+├── terms.html                 # Terms & conditions, disclaimer, and hyperlinking policy
+├── screen.html                # Screen Reader Access instructions & shortcuts
+├── photos.html                # Main photo gallery categorizing departmental activities
+├── photos_camp.html           # Photo gallery for Health Camps
+├── photos_esic.html           # Photo gallery for ESIC-related programs
+├── photos_telemedicine.html   # Photo gallery for Telemedicine initiatives
+├── coverage-registration.html # Information on ESIC coverage and online registration
 ├── css/
-│   ├── style.css             # Main stylesheet & variable tokens
-│   └── responsive.css        # Mobile, tablet grid layouts & a11y overrides
+│   ├── style.css              # Theme-aligned style system (maroon, white, cream)
+│   └── responsive.css         # Media queries and responsive adjustments
 ├── js/
-│   └── main.js               # Main script (A11y, table search, animations)
-├── images/
-│   ├── header-banner.png     # Official portal header emblem banner
-│   └── banner.jpg            # Secondary fallback banner
-└── documents/                 # PDF circulars, forms & recruitment notifications
-    ├── Launching AMO ESIS Website.pdf
-    ├── List of Medical Reimbursement Bills of IP's as on January 2023.pdf
-    ├── Minutes of the Awareness cum Training Program on Website Updation Process.pdf
-    ├── Minutes of the Training Program on Web Content Creation and Updation Process.pdf
-    ├── Reimbursement Form.pdf
-    ├── Results for the post of Grade IV.pdf
-    ├── WalkinInterviewIMO may 2023.pdf
-    ├── Annexure A.pdf
-    └── Annexure B.pdf
+│   └── main.js                # Core JS logic: contrast themes, text sizing, and search functionality
+├── images/                    # Standardized image resources (banners, gallery photos, logos)
+└── documents/                 # PDF circulars, forms, and recruitment notifications
 ```
 
 ---
@@ -345,9 +351,10 @@ This portal demonstrates excellence in:
 ## ⚖️ Legal & Compliance
 
 - **Copyright**: © Government of Meghalaya. All rights reserved.
-- **Terms of Use**: See [Terms.html](terms.html)
-- **Privacy Policy**: See [Privacy Policy](privacy-policy.html)
-- **Accessibility Statement**: See [Accessibility Statement](accessibility-statement.html)
+- **Terms of Use & Privacy Policy**: See [terms.html](terms.html)
+- **Accessibility Statement**: See [accessibility.html](accessibility.html)
+- **Help Guide**: See [help.html](help.html)
+- **Sitemap**: See [sitemap.html](sitemap.html)
 
 ---
 
