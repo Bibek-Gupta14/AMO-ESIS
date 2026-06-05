@@ -80,7 +80,7 @@
        2. HEADER
   ═══════════════════════════════════════════════════════════════════════ -->
   <header class="site-header" role="banner" aria-label="Site header">
-    <img class="header-banner-img" src="images/banner.jpg" alt="Office of the Administrative Medical Officer, Employees' State Insurance Scheme, Meghalaya, Shillong" />
+    <img class="header-banner-img" src="images/banner.png" alt="Office of the Administrative Medical Officer, Employees' State Insurance Scheme, Meghalaya, Shillong" />
     <div class="visually-hidden">
       <p class="header-office">
         Office of the Administrative Medical Officer
@@ -524,72 +524,18 @@
             </div>
           </section> <br>
 
-          <!-- ─── EMPANELLED HOSPITALS ─── -->
-          <section class="hospitals-section" id="resources" aria-labelledby="hospitals-heading">
-            <h3 class="section-title" id="hospitals-heading">Empanelled Hospitals</h3>
+         
 
-            <p style="font-size: var(--fs-sm); color: var(--clr-text-secondary); margin-bottom: var(--space-5);">
-              Treatment is provided to beneficiaries at the following empanelled hospitals:
-            </p>
-
-            <!-- Search & Filter -->
-            <div class="hospitals-search-bar" role="search" aria-label="Search empanelled hospitals">
-              <div class="search-input-wrapper">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
-                     aria-hidden="true">
-                  <circle cx="9" cy="9" r="6"/>
-                  <line x1="14.5" y1="14.5" x2="19" y2="19"/>
-                </svg>
-                <label for="hospital-search" class="visually-hidden">Search hospitals by name or location</label>
-                <input
-                  type="search"
-                  id="hospital-search"
-                  class="hospital-search-input"
-                  placeholder="Search by hospital name or city…"
-                  autocomplete="off"
-                  aria-controls="hospitals-tbody"
-                  aria-label="Search empanelled hospitals"
-                />
-              </div>
-
-              <label for="hospital-filter" class="visually-hidden">Filter by city</label>
-              <select id="hospital-filter" class="hospital-filter-select"
-                      aria-label="Filter hospitals by city">
-                <option value="">All Cities</option>
-                <!-- Options populated by JS -->
-              </select>
-
-              <div id="hospital-count" class="visually-hidden" aria-live="polite" aria-atomic="true">
-                17 hospitals found
-              </div>
-            </div>
-
-            <!-- Hospitals Table -->
-            <div class="hospitals-table-wrapper">
-              <table class="hospitals-table" aria-label="List of empanelled hospitals">
-                <thead>
-                  <tr>
-                    <th scope="col" style="width:44px;">#</th>
-                    <th scope="col">Hospital Name</th>
-                    <th scope="col">City / Location</th>
-                  </tr>
-                </thead>
-                <tbody id="hospitals-tbody">
-                  <!-- Rows populated by JavaScript (main.js) -->
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Telemedicine info -->
-            <div class="info-banner" role="note" aria-label="Telemedicine services information">
-              <svg class="info-banner-icon" viewBox="0 0 24 24" fill="currentColor"
-                   width="20" height="20" aria-hidden="true">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-              </svg>
-              <div>
-                <strong>Telemedicine Services:</strong> Inaugurated on 1st December 2016 providing
-                consultation services on a daily basis by connecting with Specialist/Super-specialist
-                Doctors of ESIC Hospital, Joka, Kolkata.
+          <!-- Telemedicine info -->
+          <div class="info-banner" role="note" aria-label="Telemedicine services information">
+            <svg class="info-banner-icon" viewBox="0 0 24 24" fill="currentColor"
+                  width="20" height="20" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+            </svg>
+            <div>
+              <strong>Telemedicine Services:</strong> Inaugurated on 1st December 2016 providing
+              consultation services on a daily basis by connecting with Specialist/Super-specialist
+              Doctors of ESIC Hospital, Joka, Kolkata.
               </div>
             </div>
 
