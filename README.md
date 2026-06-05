@@ -2,7 +2,7 @@
 
 ## Employees' State Insurance Scheme, Government of Meghalaya
 
-![AMO ESIS Banner](images/banner.jpg)
+![AMO ESIS Banner](images/banner.png)
 
 > **Modernizing Public Services: A Responsive, Accessible, and Compliant Government Portal**
 
