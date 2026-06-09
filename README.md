@@ -290,13 +290,13 @@ npx http-server
 
 ## 📋 Content Management
 
-### Adding New Content
+### Editing New Content
 
 1. **Hospital List Updates**:
-   - Edit the `HOSPITAL_DATA` array in `js/main.js`. The search filters and matching tables will automatically update.
+   - Removed the `HOSPITAL_DATA` array in `js/main.js`, as the existing content already contains all the details.
 
 2. **Documents & Announcements**:
-   - Add new PDF files directly to the `/documents` folder.
+   - Added new PDF files directly to the `/documents` folder.
    - Insert corresponding download elements under the announcements grid or lists within `home.html` and `forms.html` following the chronological descending order of publication.
 
 3. **Key Contacts**:
@@ -319,7 +319,7 @@ npx http-server
 
 This project is released under the **Open Government License – India (OGL)**. This ensures transparency, accountability, and allows for reuse by other government entities.
 
-For details, see [LICENSE.md](LICENSE.md) and the [Open Government Data Platform](https://data.gov.in).
+For details, visit the [Open Government Data Platform](https://data.gov.in).
 
 ---
 
@@ -345,7 +345,8 @@ This portal demonstrates excellence in:
 
 ## 👥 Team
 
-**Project Under**: Office of the Administrative Medical Officer, ESIS, Government of Meghalaya
+- **Project Under**: ***National Informatics Centre (**NIC**)***, for the Office of the *Administrative Medical Officer, ESIS*, Government of Meghalaya.
+
 ---
 
 ## ⚖️ Legal & Compliance
@@ -359,10 +360,8 @@ This portal demonstrates excellence in:
 ---
 
 **Last Updated**: June 2026 | 
-**For the latest information, visit**: [AMO ESIS Portal](https://meghalaya.gov.in)
+**For the latest information, visit**: [AMO ESIS Portal](https://megesis.nic.in/)
 
 ---
 
-**Developed Using**: HTML5 | CSS3 | Vanilla JavaScript | ♿ WCAG 2.1 AA | 🏛️ GIGW 3.0 Compliant
-
-**Government of Meghalaya - Office of the Administrative Medical Officer, ESIS**
+**Developed Using**: HTML5 | CSS3 | Vanilla JavaScript | ***Complient under***: ♿ WCAG 2.1 AA | 🏛️ GIGW 3.0 Compliant
